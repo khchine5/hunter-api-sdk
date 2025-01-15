@@ -1,0 +1,10 @@
+-r requirements.txt
+flake8
+mypy
+coverage
+isort
+pytest
+django-stubs
+pydantic
+django_coverage_plugin
+responses
