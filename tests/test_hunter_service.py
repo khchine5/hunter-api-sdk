@@ -1,6 +1,8 @@
 from unittest.mock import patch
+
 import pytest
 import responses
+
 from hunter_sdk.hunter_service import HunterService
 from hunter_sdk.storage import InMemoryStorage
 
@@ -56,6 +58,7 @@ def test_verify_email_http_request(mock_hunter_service):
         f"https://api.hunter.io/v2/email-verifier?email={email}&api_key=mock_api_key"
     )
 
+
 @responses.activate
 def test_verify_email_uses_cache_without_request(mock_hunter_service):
     """Test that verify_email uses the cached result and skips the HTTP request."""
@@ -73,6 +76,7 @@ def test_verify_email_uses_cache_without_request(mock_hunter_service):
 
     # Ensure no HTTP request was made
     assert len(responses.calls) == 0
+
 
 @responses.activate
 def test_verify_email_retries_on_202(mock_hunter_service):
@@ -101,6 +105,7 @@ def test_verify_email_retries_on_202(mock_hunter_service):
     # Ensure two HTTP requests were made (one retry)
     assert len(responses.calls) == 2
 
+
 @responses.activate
 def test_verify_email_handles_http_error(mock_hunter_service):
     """Test that verify_email handles non-200/202 status codes gracefully."""
@@ -120,6 +125,7 @@ def test_verify_email_handles_http_error(mock_hunter_service):
 
     # Ensure one HTTP request was made
     assert len(responses.calls) == 1
+
 
 @responses.activate
 def test_verify_email_handles_rate_limit(mock_hunter_service):
@@ -141,6 +147,7 @@ def test_verify_email_handles_rate_limit(mock_hunter_service):
     # Ensure one HTTP request was made
     assert len(responses.calls) == 1
 
+
 @responses.activate
 def test_verify_email_handles_exception(mock_hunter_service):
     """Test that verify_email handles unexpected exceptions gracefully."""
@@ -152,6 +159,7 @@ def test_verify_email_handles_exception(mock_hunter_service):
 
         # Ensure the result is None for an exception
         assert result is None
+
 
 @responses.activate
 def test_verify_email_stores_result(mock_hunter_service):

@@ -77,8 +77,8 @@ The `validate_email` method:
 ### **In-Memory Storage**
 
 The SDK uses a simple in-memory dictionary to store results:
-- `store(key, value)`: Stores a key-value pair.
-- `retrieve(key)`: Retrieves the value for a key.
+- `set(key, value)`: Stores a key-value pair.
+- `get(key)`: Retrieves the value for a key.
 - `clear()`: Clears all stored data.
 
 ---
@@ -90,7 +90,7 @@ The project includes unit tests using the `pytest` framework and the `responses`
 ### **Run Tests**
 
 ```bash
-pytest tests/
+make test
 ```
 
 ---

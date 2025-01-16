@@ -1,5 +1,7 @@
 import logging
+
 import requests
+
 from .storage import InMemoryStorage
 
 logger = logging.getLogger(__name__)
