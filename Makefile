@@ -13,5 +13,12 @@ black:
 	black hunter_sdk tests
 flake8:
 	flake8 hunter_sdk tests
+ruff:
+	ruff format
 
-format: isort black flake8
+format: flake8 ruff
+
+mypy:
+	mypy .
+
+full_test:  format test mypy

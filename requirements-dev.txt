@@ -8,3 +8,4 @@ django-stubs
 pydantic
 django_coverage_plugin
 responses
+wemake-python-styleguide
